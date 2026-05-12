@@ -1,1 +1,24 @@
-<p>types works!</p>
+<h2>Pokemon Types</h2>
+
+@if(loading)
+{
+    <div>loading...</div>
+}
+
+@if(data)
+{
+    <ul>
+
+        @for(type of data.results; track type.name)
+        {
+            <li>
+
+                <a [routerLink]="['/type', type.name]">
+                    {{type.name}}
+                </a>
+
+            </li>
+        }
+
+    </ul>
+}
