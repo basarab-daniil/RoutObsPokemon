@@ -1,1 +1,21 @@
-<p>pokemon-detail works!</p>
+@if(loading)
+{
+    <div>loading...</div>
+}
+
+@if(data)
+{
+    <h2>{{data.name}}</h2>
+
+    <p>
+        Height: {{data.height}}
+    </p>
+
+    <p>
+        Weight: {{data.weight}}
+    </p>
+
+    <p>
+        Base Experience: {{data.base_experience}}
+    </p>
+}
