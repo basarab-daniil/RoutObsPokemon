@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -16,8 +16,8 @@ import {
   selector: 'app-types',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './types.component.html',
-  styleUrl: './types.component.css'
+  templateUrl: './types.html',
+  styleUrl: './types.css'
 })
 export class TypesComponent implements OnInit {
 
@@ -27,9 +27,13 @@ export class TypesComponent implements OnInit {
 
   o!: Observable<PokemonTypeResponse>;
 
-  constructor(public pokeService: PokeapiService)
+  constructor
+  (
+    private pokeService: PokeapiService,
+    private cr : ChangeDetectorRef
+  )
   {
-
+    
   }
 
   ngOnInit(): void
@@ -49,8 +53,8 @@ export class TypesComponent implements OnInit {
   getData = (d: PokemonTypeResponse) =>
   {
     this.data = d;
-
     this.loading = false;
+    this.cr.detectChanges();
   }
 
 }

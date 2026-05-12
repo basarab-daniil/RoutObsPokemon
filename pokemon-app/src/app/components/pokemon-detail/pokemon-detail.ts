@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
@@ -14,8 +14,8 @@ import { PokemonDetail } from '../../models/pokemon';
   selector: 'app-pokemon-detail',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './pokemon-detail.component.html',
-  styleUrl: './pokemon-detail.component.css'
+  templateUrl: './pokemon-detail.html',
+  styleUrl: './pokemon-detail.css'
 })
 export class PokemonDetailComponent {
 
@@ -27,7 +27,8 @@ export class PokemonDetailComponent {
 
   constructor(
     private route: ActivatedRoute,
-    public pokeService: PokeapiService
+    private pokeService: PokeapiService,
+    private cr : ChangeDetectorRef
   )
   {
     this.route.paramMap.subscribe(this.getRouterParam);
@@ -55,8 +56,8 @@ export class PokemonDetailComponent {
   getData = (d: PokemonDetail) =>
   {
     this.data = d;
-
     this.loading = false;
+    this.cr.detectChanges();
   }
 
 }
