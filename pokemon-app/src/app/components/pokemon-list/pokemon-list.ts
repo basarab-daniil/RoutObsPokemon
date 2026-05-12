@@ -5,7 +5,7 @@ import { ActivatedRoute, ParamMap, RouterModule } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
-import { PokeapiService } from '../../services/pokeapi.service';
+import { PokeapiService } from '../../services/pokeapi';
 
 import {
   PokemonByTypeResponse
