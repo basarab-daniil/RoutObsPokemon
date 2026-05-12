@@ -1,1 +1,24 @@
-<p>pokemon-list works!</p>
+<h2>Type: {{typeName}}</h2>
+
+@if(loading)
+{
+    <div>loading...</div>
+}
+
+@if(data)
+{
+    <ul>
+
+        @for(p of data.pokemon; track p.pokemon.name)
+        {
+            <li>
+
+                <a [routerLink]="['/pokemon', p.pokemon.name]">
+                    {{p.pokemon.name}}
+                </a>
+
+            </li>
+        }
+
+    </ul>
+}
